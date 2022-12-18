@@ -1,0 +1,31 @@
+name: Upload R2
+description: "Upload artifacts to R2"
+author: "Rajat Kulkarni"
+inputs:
+  account_id:
+    description: "account_id"
+    required: true
+  access_key_id:
+    description: "access_key_id"
+    required: true
+  secret_access_key:
+    description: "secret_access_key"
+    required: true
+  bucket:
+    required: true
+    description: "bucket to upload to"
+  source_dir:
+    required: true
+    description: "artifacts source"
+  destination_dir:
+    required: false
+    default: /
+    description: "destination directory for upload"
+outputs:
+  object_key:
+    description: "object key"
+  object_locations:
+    description: "object locations"
+runs:
+  using: "node16"
+  main: "dist/index.js"

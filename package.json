@@ -1,0 +1,20 @@
+{
+  "name": "upload-r2-action",
+  "version": "0.1.0",
+  "description": "Upload artifacts to R2",
+  "main": "index.js",
+  "author": "Rajat Kulkarni",
+  "license": "MIT",
+  "scripts": {
+    "package": "ncc build index.js -o dist"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@aws-sdk/client-s3": "^3.231.0",
+    "@aws-sdk/s3-request-presigner": "^3.231.0",
+    "klaw-sync": "^6.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.36.0"
+  }
+}
