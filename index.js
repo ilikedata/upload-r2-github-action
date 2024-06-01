@@ -48,7 +48,15 @@ async function main() {
   return Promise.all(
     paths.map(async (p) => {
       const fileStream = fs.createReadStream(p.path);
-      const bucketPath = `${destinationDir}/${path.relative(
+      // const bucketPath = `${destinationDir}/${path.relative(
+      //   sourceDir,
+      //   p.path
+      // )}`;
+      console.log(path.relative(
+        sourceDir,
+        p.path
+      ));
+      const bucketPath = `${path.relative(
         sourceDir,
         p.path
       )}`;
