@@ -34,7 +34,7 @@ const S3 = new S3Client({
   },
 });
 
-const destinationDir = DESTINATION_DIR ?? "/";
+const destinationDir = DESTINATION_DIR ?? "";
 
 async function upload(params) {
   await S3.send(new PutObjectCommand(params));
