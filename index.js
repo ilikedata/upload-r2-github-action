@@ -52,7 +52,7 @@ async function main() {
       //   sourceDir,
       //   p.path
       // )}`;
-      console.log(path.relative(
+      core.info(path.relative(
         sourceDir,
         p.path
       ));
