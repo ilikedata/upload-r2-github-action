@@ -55,10 +55,14 @@ async function main() {
   return Promise.all(
     paths.map(async (p) => {
       const fileStream = fs.createReadStream(p.path);
-      const bucketPath = `${destinationDir}${path.relative(
+      let bucketPath = `${destinationDir}${path.relative(
         sourceDir,
         p.path
       )}`;
+      while(bucketPath.charAt(0) === '/')
+        {
+          bucketPath = bucketPath.substring(1);
+        }
       core.info(bucketPath);
       // const bucketPath = `${path.relative(
       //   sourceDir,
