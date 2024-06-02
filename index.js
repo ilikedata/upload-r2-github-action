@@ -83,7 +83,9 @@ async function main() {
 
 main()
   .then((locations) => {
+    core.info("starting");
     core.info(`object key - ${destinationDir}`);
+    locations.map((m) => core.info(m.toString()));
     core.info(`object locations - ${locations}`);
     core.setOutput("object_key", destinationDir);
     core.setOutput("object_locations", locations);
