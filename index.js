@@ -21,9 +21,16 @@ const BUCKET_NAME = core.getInput("bucket", {
 const SOURCE_DIR = core.getInput("source_dir", {
   required: true,
 });
-const DESTINATION_DIR = core.getInput("destination_dir", {
-  required: false,
-});
+// const DESTINATION_DIR = core.getInput("destination_dir", {
+//   required: false,
+// });
+
+// const ACCOUNT_ID = "asdf";
+// const ACCESS_KEY_ID = "asdf";
+// const SECRET_ACCESS_KEY = "asdf";
+// const BUCKET_NAME = "asdf";
+// const SOURCE_DIR = "./dist";
+const DESTINATION_DIR = "";
 
 const S3 = new S3Client({
   region: "auto",
@@ -48,18 +55,15 @@ async function main() {
   return Promise.all(
     paths.map(async (p) => {
       const fileStream = fs.createReadStream(p.path);
-      // const bucketPath = `${destinationDir}/${path.relative(
-      //   sourceDir,
-      //   p.path
-      // )}`;
-      core.info(path.relative(
-        sourceDir,
-        p.path
-      ));
-      const bucketPath = `${path.relative(
+      const bucketPath = `${destinationDir}${path.relative(
         sourceDir,
         p.path
       )}`;
+      core.info(bucketPath);
+      // const bucketPath = `${path.relative(
+      //   sourceDir,
+      //   p.path
+      // )}`;
 
       await getSignedUrl(
         S3,
